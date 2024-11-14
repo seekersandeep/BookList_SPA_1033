@@ -1,0 +1,83 @@
+﻿@page
+@model BookList_SPA_1033.Pages.Booklist.UpsertModel
+@{
+    var title = Model.Book.Id != 0 ? "Edit Book" : "New Book";
+    var saveUpdate = Model.Book.Id != 0 ? "Update" : "Save";
+}
+
+<h2 class="text-primary text-center">@title</h2>
+<form method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    @if (Model.Book.Id != 0)
+
+    {
+        <input type="hidden" asp-for="Book.Id" />
+    }
+    <div class="container round border p-2 m-2">
+        <div class="form-group row">
+            <div class="col-4 text-primary">
+                <label asp-for="Book.Title"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Book.Title" class="form-control" />
+                <span asp-validation-for="Book.Title"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4 text-primary">
+                <label asp-for="Book.Description"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Book.Description" class="form-control" />
+                <span asp-validation-for="Book.Description"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4 text-primary">
+                <label asp-for="Book.Author"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Book.Author" class="form-control" />
+                <span asp-validation-for="Book.Author"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4 text-primary">
+                <label asp-for="Book.ISBN"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Book.ISBN" class="form-control" />
+                <span asp-validation-for="Book.ISBN"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4 text-primary">
+                <label asp-for="Book.Price"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Book.Price" class="form-control" />
+                <span asp-validation-for="Book.Price"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-6">
+            <button type="submit" class="btn btn-info form-control">@saveUpdate</button>
+        </div>
+        <div class="col-6">
+            <a asp-page="Index" class="btn btn-success form-control">
+                Back To List
+            </a>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
